@@ -15,23 +15,21 @@ class DeviceBox extends StatefulWidget {
 class _DeviceBoxState extends State<DeviceBox> {
   @override
   Widget build(BuildContext context) {
-    void powerSwitched(){
+    void powerSwitched() {
       setState(() {
-        if(widget.device.devicePowerOn == true){
-          widget.device.devicePowerOn=false;
-        }
-        else{
-          widget.device.devicePowerOn=true;
-
+        if (widget.device.devicePowerOn == true) {
+          widget.device.devicePowerOn = false;
+        } else {
+          widget.device.devicePowerOn = true;
         }
       });
-
     }
+
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       child: Container(
         decoration: BoxDecoration(
-          color: const Color(0xfffffbf1),
+           color:  widget.device.devicePowerOn? Color(0xff282622) : Color(0xfffffbf1),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(
@@ -42,14 +40,16 @@ class _DeviceBoxState extends State<DeviceBox> {
               Image.asset(
                 widget.device.imagePath,
                 height: 65,
-                //color: Colors.yellow,
+                color: widget.device.devicePowerOn? Colors.white : Color(0xff282622),
               ),
               Row(
                 children: [
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
-                      child: Text(widget.device.deviceName),
+                      child: Text(widget.device.deviceName,style: TextStyle(
+                        color: widget.device.devicePowerOn ? Colors.white : Color(0xff282622)
+                      ),),
                     ),
                   ),
                   Transform.rotate(
