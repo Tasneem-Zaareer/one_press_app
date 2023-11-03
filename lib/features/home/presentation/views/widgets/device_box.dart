@@ -1,14 +1,32 @@
 import 'dart:math';
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:home_controller_app/features/home/data/device_model.dart';
 
-class DeviceBox extends StatelessWidget {
+class DeviceBox extends StatefulWidget {
   const DeviceBox({super.key, required this.device});
 
   final DeviceModel device;
 
   @override
+  State<DeviceBox> createState() => _DeviceBoxState();
+}
+
+class _DeviceBoxState extends State<DeviceBox> {
+  @override
   Widget build(BuildContext context) {
+    void powerSwitched(){
+      setState(() {
+        if(widget.device.devicePowerOn == true){
+          widget.device.devicePowerOn=false;
+        }
+        else{
+          widget.device.devicePowerOn=true;
+
+        }
+      });
+
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 15),
       child: Container(
@@ -22,23 +40,24 @@ class DeviceBox extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.asset(
-                device.imagePath,
+                widget.device.imagePath,
                 height: 65,
+                //color: Colors.yellow,
               ),
               Row(
                 children: [
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
-                      child: Text(device.deviceName),
+                      child: Text(widget.device.deviceName),
                     ),
                   ),
                   Transform.rotate(
                     angle: pi / 2,
                     child: CupertinoSwitch(
-                      value: false,
+                      value: widget.device.devicePowerOn,
                       onChanged: (value) {
-
+                        powerSwitched();
                       },
                     ),
                   )

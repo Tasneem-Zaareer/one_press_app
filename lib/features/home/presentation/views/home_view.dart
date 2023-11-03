@@ -49,7 +49,6 @@ class HomeView extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 40),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.0),
               child: Column(

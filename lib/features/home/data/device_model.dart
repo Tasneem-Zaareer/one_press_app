@@ -1,7 +1,7 @@
 class DeviceModel {
   final String imagePath;
   final String deviceName;
-  final bool devicePowerOn;
+  late bool devicePowerOn;
 
   DeviceModel({
     required this.imagePath,
