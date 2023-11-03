@@ -10,10 +10,10 @@ class OnePressApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'One Press',
       debugShowCheckedModeBanner: false,
-      home: const HomeView(),
+      home: HomeView(),
     );
   }
 }
