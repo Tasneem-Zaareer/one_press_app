@@ -22,6 +22,7 @@ class MyIcon extends StatelessWidget {
         imagePath,
         color: const Color(0xff2d2a26),
         height: 30,
+        width: 30,
       ),
     );
   }
